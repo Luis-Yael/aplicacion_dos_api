@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from aplicacion_dos_api.views import bootstrap
 from aplicacion_dos_api.views import users
+from aplicacion_dos_api.views import alumnos
+from aplicacion_dos_api.views import maestros
 from aplicacion_dos_api.views import auth
 
 urlpatterns = [
@@ -24,8 +26,14 @@ urlpatterns = [
         path('bootstrap/version', bootstrap.VersionView.as_view()),
     #Create Admin
         path('admin/', users.AdminView.as_view()),
-    #User Data
-        path('me/', users.Userme.as_view()),
+    #Admin Data
+        path('lista-admins/', users.AdminAll.as_view()),
+    #Create Alumno
+        path('alumnos/', alumnos.AlumnosView.as_view()),
+    #Create Maestro
+        path('maestros/', maestros.MaestrosView.as_view()),
+    #Maestro Data
+        path('lista-maestros/', maestros.MaestrosAll.as_view()),
     #Login
         path('token/', auth.CustomAuthToken.as_view()),
     #Logout
